@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UncleCock</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+</head>
+<body>
+    <div>
+        <nav id="navbar1">
+            <a href="https://www.facebook.com/profile.php?id=100004225659047">Contact us</a>
+            <a href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">FAQ</a>
+            {% if session.get('username') %}
+                <a href="{{ url_for('info') }}" class="username-link">{{session['username']}}</a>
+            {% endif %}
+
+        </nav>
+    </div>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/gay.png')}}" width="120" height="120"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('allproducts')}}">Products</a>
+            <a class="left_icon" href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">Event</a>
+            <a class="small_img" href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='image/cart.png')}}" width="40" height="40"></a>
+            <a class="small_img" href="{{ url_for('info') }}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <div id="main_bady">
+        <h1>限時特價!!!</h1><br>
+        <h2>雞你太美</h2>
+        <h3>你幹嘛~~哈哈~~哎呦~~</h3>
+        <h1 id="sale"><del>$1000</del> &rarr; $999!!!</h1>
+        <img src="{{url_for('static', filename='image/basketball.gif')}}" width="400" height="400">
+        <a href="{{ url_for('product1') }}"><button>Buy Now!</button></a>
+    </div>
+    <div class="second_bady">
+        <h1>推薦影片</h1><br>
+        <figure id="top1">
+            <a href="{{ url_for('product1') }}"><img src="{{ url_for('static', filename='image/basketball.jpg') }}" width="300" height="300"></a>
+            <figcaption class="fig">雞你太美</figcaption>
+        </figure>
+        
+        <figure id="top2">
+            <a href="{{ url_for('product2') }}"><img src="{{url_for('static', filename='image/chick.png')}}" width="300" height="300"></a>
+            <figcaption class="fig">雞攻擊之術</figcaption>
+        </figure>
+
+        <figure id="top3">
+            <a href="{{ url_for('product3') }}"><img src="{{url_for('static', filename='image/song.png')}}" width="300" height="300"></a>
+            <figcaption class="fig">Chicken Song</figcaption>
+        </figure>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        alert("{{ message }}");
+                    </script>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+        
+</body>
+</html>

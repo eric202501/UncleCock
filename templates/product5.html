@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>影片商品頁面</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='product1.css')}}">
+</head>
+
+<body>
+  <div>
+    <nav id="navbar1">
+        <a href="https://www.facebook.com/profile.php?id=100004225659047">Contact us</a>
+        <a href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">FAQ</a>
+        {% if session.get('username') %}
+          <a href="{{ url_for('info') }}" class="username-link">{{session['username']}}</a>
+        {% endif %}
+    </nav>
+</div>
+<div>
+    <nav id="navbar2">
+        <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/gay.png')}}" width="120" height="120"></a>            
+        <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+        <a class="left_icon" href="{{ url_for('allproducts')}}">Products</a>
+        <a class="left_icon" href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">Event</a>
+        <a class="small_img" href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='image/cart.png')}}" width="40" height="40"></a>
+        <a class="small_img" href="{{ url_for('info') }}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+    </nav>
+</div>
+  <div class="container">
+    <div class="video-player-container">
+      <div class="video-preview">
+        <img src="{{url_for('static', filename='image/nugget_long.gif')}}">
+      </div>
+      <div class="product-details">
+        <h1 class="video-title">雞塊唱歌</h1>
+        <pre>??????????????????????</pre>
+        <div class="buttons">
+          <a href="{{ url_for('go_item5') }}"><button class="buy-btn">購買</button></a>
+          <a href="{{ url_for('add_item5') }}"><button class="cart-btn">加入購物車</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="recommendations">
+      <div class="recommendation-list">
+        <!-- 推薦影片列表 -->
+        <img class="recommend_video1" src="{{url_for('static', filename='image/nugget.jpg')}}" width="100%">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

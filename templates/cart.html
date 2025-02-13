@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart </title>
+    <link rel="stylesheet" href="{{url_for('static', filename='cart.css')}}">
+</head>
+<body>
+    <div>
+        <nav id="navbar1">
+            <a href="https://www.facebook.com/profile.php?id=100004225659047">Contact us</a>
+            <a href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">FAQ</a>
+            {% if session.get('username') %}
+                <a href="{{ url_for('info') }}" class="username-link">{{session['username']}}</a>
+            {% endif %}
+        </nav>
+    </div>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/gay.png')}}" width="120" height="120"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('allproducts')}}">Products</a>
+            <a class="left_icon" href="https://youtu.be/dQw4w9WgXcQ?si=r1BctCRkoypSTeZ7">Event</a>
+            <a class="small_img" href="{{ url_for('cart') }}"><img src="{{url_for('static', filename='image/cart.png')}}" width="40" height="40"></a>
+            <a class="small_img" href="{{ url_for('info') }}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="shopping-cart">
+            <div class="cart-header">Shopping Cart 🐔</div>
+            <div class="cart-info">You have {{num}} item in your cart</div>
+            <div class="cart-items">
+                {% if item1 %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{url_for('static', filename='image/basketball.jpg')}}">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-information">
+                                <div class="item-name">雞你太美</div>
+                                <div class="item-desc">迎面走來的你讓我如此蠢蠢欲動</div>
+                            </div>
+                            <div class="item-price">$999</div>
+                            <a href="{{ url_for('delete_item1') }}"><div class="item-remove"><img src="{{url_for('static', filename='image/delete_item.png')}}"></div></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if item2 %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{url_for('static', filename='image/chick.png')}}">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-information">
+                                <div class="item-name">雞攻擊之術</div>
+                                <div class="item-desc">Go chicken go-oh-o-oh-oh-o!</div>
+                            </div>
+                            <div class="item-price">$189</div>
+                            <a href="{{ url_for('delete_item2') }}"><div class="item-remove"><img src="{{url_for('static', filename='image/delete_item.png')}}"></div></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if item3 %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{url_for('static', filename='image/song.png')}}">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-information">
+                                <div class="item-name">Chicken song</div>
+                                <div class="item-desc">🐔 🐔 🐔 🐔 🐔 🐔 🐔 🐔 🐔 🐔 🐔 🐔</div>
+                            </div>
+                            <div class="item-price">$139</div>
+                            <a href="{{ url_for('delete_item3') }}"><div class="item-remove"><img src="{{url_for('static', filename='image/delete_item.png')}}"></div></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if item4 %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{url_for('static', filename='image/fire.jpg')}}">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-information">
+                                <div class="item-name">ㄔㄐㄐ</div>
+                                <div class="item-desc">左邊一個ㄐㄐ 右邊一個ㄐㄐ</div>
+                            </div>
+                            <div class="item-price">$709</div>
+                            <a href="{{ url_for('delete_item4') }}"><div class="item-remove"><img src="{{url_for('static', filename='image/delete_item.png')}}"></div></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if item5 %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{url_for('static', filename='image/nugget.jpg')}}">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-information">
+                                <div class="item-name">雞塊唱歌</div>
+                                <div class="item-desc">??????????????????????</div>
+                            </div>
+                            <div class="item-price">$289</div>
+                            <a href="{{ url_for('delete_item5') }}"><div class="item-remove"><img src="{{url_for('static', filename='image/delete_item.png')}}"></div></a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-details">
+            <form action="{{url_for('purchase')}}" method="POST">
+                <div class="card-header">Card Details</div>
+                <div class="card-types">
+                    <div class="card-type"><img src="{{url_for('static', filename='image/mastercard.jpg')}}" alt="mastercard"></div>
+                    <div class="card-type"><img src="{{url_for('static', filename='image/visa.png')}}" alt="visa"></div>
+                    <div class="card-type"><img src="{{url_for('static', filename='image/UnionPay.png')}}" alt="UnionPay"></div>
+                    <div class="card-type"><img src="{{url_for('static', filename='image/jcb.png')}}" alt="jcb"></div>
+                </div>
+                <div class="card-info">
+                    <div class="field">
+                        <label for="name">Name on card</label>
+                        <input type="text" name="name" id="name" placeholder="Name" required>
+                    </div>
+                    <div class="field">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" name="card-number" id="card-number"  required>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="expiration">Expiration date</label>
+                            <input type="text" name="expiration" id="expiration" placeholder="mm/yy" required>
+                        </div>
+                        <div class="field">
+                            <label for="cvv">CVV</label>
+                            <input type="text" name="cvv" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="totals">
+                    <div class="total-field">
+                        <span>Subtotal</span>
+                        <span>${{sum}}</span>
+                    </div>
+                    <div class="total-field">
+                        <span>Discount</span>
+                        <span>$0</span>
+                    </div>
+                    <div class="total-field">
+                        <span>Total </span>
+                        <span>${{sum}}</span>
+                    </div>
+                </div>
+                <div class="checkout-btn">
+                    <button type="submit">${{sum}} Checkout →</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='cart.js')}}"></script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+            {% for category, message in messages %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endfor %}
+        
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
